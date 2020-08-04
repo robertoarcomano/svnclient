@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SVN_REPOS=/tmp/svnclient
-PROJECT1=myproject1
-PROJECT2=myproject2
+PROJECT1=project1
+PROJECT2=project2
 REPO=repo
 SVN_REPO=$SVN_REPOS"/$REPO"
 SVN_PROJECT1=$SVN_REPO"/$PROJECT1"
@@ -63,3 +63,26 @@ cd ..
 
 # 5.4. Checkout the whole repo
 svn co $SVN_ALL_URL
+
+# 6. Merge Tests
+# 6.1. Update file on project1 and commit it
+cd $PROJECT1 || exit
+sed -i -e 's/^/MANUAL COMMIT\n/' test1
+svn commit -m "MANUAL COMMIT"
+cd ..
+# 6.2. Update file on while repo
+cd repo || exit
+echo
+echo "BEFORE"
+echo "======================="
+cat $PROJECT1/test1
+echo "======================="
+echo "MERGED" >> $PROJECT1/test1
+svn commit -m "MERGED"
+svn merge $SVN_ALL_URL .
+echo
+echo "AFTER"
+echo "======================="
+cat $PROJECT1/test1
+echo "======================="
+cd ..
