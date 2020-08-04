@@ -1,8 +1,3 @@
-# svnclient
-Tutorial for svn
-
-## Script <a href=svn.sh>svn.sh</a>
-```
 #!/bin/bash
 
 SVN_REPOS=/tmp/svnclient
@@ -48,27 +43,3 @@ svn log
 
 # 99. Exits dir
 cd ..
-```
-## OUTPUT
-```
-berto@clevo:~/IdeaProjects/svnclient$ ./svn.sh 
-Committing transaction...
-Committed revision 1.
-Checked out revision 1.
-A         test
-Adding         test
-Transmitting file data .done
-Committing transaction...
-Committed revision 2.
-Updating '.':
-At revision 2.
-------------------------------------------------------------------------
-r2 | berto | 2020-08-04 14:50:47 +0100 (Tue, 04 Aug 2020) | 1 line
-
-New file test
-------------------------------------------------------------------------
-r1 | berto | 2020-08-04 14:50:47 +0100 (Tue, 04 Aug 2020) | 1 line
-
-trunk creation
-------------------------------------------------------------------------
-```
